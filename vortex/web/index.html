@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0d14"><title>Vortex — фриланс-заказы</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script><script src="/static/app.js" defer></script>
+</head>
+<body><div class="app">
+<header class="topbar"><div class="brand-mark">V</div><div><div class="brand">VORTEX</div><div class="subtitle">Фриланс-заказы в одном месте</div></div><div class="avatar" id="avatar">V</div></header>
+<nav class="main-nav" aria-label="Основная навигация">
+<button class="nav-tab active" data-view="orders" type="button">⌂ Заказы</button>
+<button class="nav-tab" data-view="favorites" type="button">♡ Избранное <span id="nav-favorite-count">0</span></button>
+<button class="nav-tab" data-view="profile" type="button">◉ Профиль</button>
+</nav>
+<main id="orders-view">
+<section class="hero"><div class="eyebrow">ТВОЙ СЛЕДУЮЩИЙ ПРОЕКТ</div><h1>Находи заказы.<br><span>Расти быстрее.</span></h1><p class="hero-description">Подбирай проекты под свои навыки и интересы.</p>
+<div class="stats"><div class="stat-card"><b id="count">—</b><small>в выдаче</small></div><div class="stat-card"><b id="favorite-count">0</b><small>в избранном</small></div></div></section>
+<section class="section"><div class="section-heading"><h2>Категории</h2><button id="clearCategory" class="text-button" type="button">Сбросить</button></div>
+<div class="categories" id="categories">
+<button class="category active" data-category="">✨ Все</button><button class="category" data-category="web">🌐 Сайты</button><button class="category" data-category="telegram">🤖 Telegram</button><button class="category" data-category="ai">🧠 ИИ</button><button class="category" data-category="python">🐍 Python</button>
+</div></section>
+<section class="section"><div class="section-heading"><h2 id="list-title">Лента заказов</h2><span class="pill" id="catalog-pill">ЗАГРУЗКА</span></div>
+<label class="search"><span>⌕</span><input id="search" type="search" placeholder="Поиск по названию, источнику..." autocomplete="off"></label>
+<div class="toolbar"><button id="favorites-toggle" class="filter-chip" type="button" aria-pressed="false">♡ Избранное</button><label class="sort-label">Сортировка <select id="sort"><option value="new">Сначала новые</option><option value="old">Сначала старые</option><option value="title">По названию</option></select></label></div>
+<div id="orders" class="orders"><div class="loading">Загружаем заказы…</div></div>
+<div id="catalog-actions" hidden><button id="loadMore" class="text-button" type="button">Показать ещё</button></div><p class="notice" id="catalog-notice">Загружаем каталог.</p>
+</section></main>
+<main id="profile-view" hidden>
+<section class="profile-panel">
+<div class="eyebrow">ЛИЧНЫЙ КАБИНЕТ</div><h1>Мой профиль</h1>
+<div class="profile-card"><div class="profile-avatar" id="profile-avatar">V</div><div><h2 id="profile-name">Гость Vortex</h2><p id="profile-username">Откройте Mini App из Telegram</p></div></div>
+<div class="profile-details"><div><span>Telegram ID</span><b id="profile-id">—</b></div><div><span>Статус</span><b id="profile-status">Не авторизован в Telegram</b></div><div><span>Избранных заказов</span><b id="profile-favorites">0</b></div></div>
+<p class="profile-note" id="profile-note">Откройте приложение через Telegram для безопасной регистрации или входа.</p>
+<form id="profile-form" class="profile-form" hidden>
+<label>Специализация<input id="profile-specialization" maxlength="200" placeholder="Например, Python-разработчик"></label>
+<label>Навыки<textarea id="profile-skills" maxlength="4000" rows="3" placeholder="Python, FastAPI, SQL, автоматизация..."></textarea></label>
+<div class="profile-form-row"><label>Бюджет от<input id="profile-budget-min" type="number" min="0" placeholder="0"></label><label>Бюджет до<input id="profile-budget-max" type="number" min="0" placeholder="Без ограничений"></label></div>
+<fieldset><legend>Интересующие категории</legend><label class="check"><input type="checkbox" name="profile-category" value="web"> Сайты</label><label class="check"><input type="checkbox" name="profile-category" value="telegram"> Telegram</label><label class="check"><input type="checkbox" name="profile-category" value="ai"> ИИ и автоматизация</label><label class="check"><input type="checkbox" name="profile-category" value="python"> Python и API</label></fieldset>
+<button class="primary-link" type="submit">Сохранить профиль</button><p id="profile-save-status" class="profile-note" aria-live="polite"></p>
+</form>
+</section>
+</main><footer>VORTEX <span>·</span> Найди свой следующий проект</footer></div>
+<div class="modal-backdrop" id="detail-modal" hidden><section class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+<button class="modal-close" id="close-detail" aria-label="Закрыть">×</button><div class="eyebrow" id="detail-category">ЗАКАЗ</div><h2 id="detail-title"></h2><div class="detail-meta" id="detail-meta"></div><p class="detail-price" id="detail-price"></p><p class="detail-description" id="detail-description"></p><div class="detail-actions"><button id="detail-favorite" class="text-button">♡ В избранное</button><a id="detail-source" class="primary-link" target="_blank" rel="noopener noreferrer">Открыть оригинал ↗</a></div>
+</section></div></body></html>
